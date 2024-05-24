@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
