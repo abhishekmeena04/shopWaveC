@@ -27,7 +27,7 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/users/register",
+        `${import.meta.env.VITE_BASE_URL}/users/register`,
         inputValues,
         {
           headers: {

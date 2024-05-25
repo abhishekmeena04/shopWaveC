@@ -9,12 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import axios from "axios";
+import { login } from "@/store/features/auth/authSlice.js";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const [inputValues, setinputValues] = useState({});
 
   const handleChange = (e) => {
@@ -25,25 +27,37 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputValues);
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/users/login",
-        inputValues,
-        {
-          withCredentials: true, // axios send automatically cookies when we apply this property
-          headers: {
-            "Content-Type": "application/json",
-          },
+    dispatch(login(inputValues))
+      .unwrap()
+      .then((response) => {
+        if (response?.sucess == true) {
+          toast.success(response?.message, { autoClose: 2000 });
+        } else {
+          toast.error(response?.message, { autoClose: 2000 });
         }
-      );
-      console.log(response.data);
-      toast.success(response?.data?.message, { autoClose: 2000 });
-      setinputValues({});
-    } catch (error) {
-      toast.error(error.response?.data?.message, { autoClose: 2000 });
-      setinputValues({});
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // try {
+    //   const response = await axios.post(
+    //     `${import.meta.env.VITE_BASE_URL}/users/login`,
+    //     inputValues,
+    //     {
+    //       withCredentials: true, // axios send automatically cookies when we apply this property
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
+    //   console.log(response.data);
+    //   toast.success(response?.data?.message, { autoClose: 2000 });
+    //   setinputValues({});
+    // } catch (error) {
+    //   toast.error(error.response?.data?.message, { autoClose: 2000 });
+    //   setinputValues({});
+    // }
   };
   return (
     <div className="flex items-center justify-center h-screen px-2">
