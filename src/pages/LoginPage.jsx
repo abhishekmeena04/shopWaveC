@@ -12,10 +12,11 @@ import { Label } from "@/components/ui/label";
 import { login } from "@/store/features/auth/authSlice.js";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputValues, setinputValues] = useState({});
 
@@ -30,8 +31,11 @@ export default function LoginPage() {
     dispatch(login(inputValues))
       .unwrap()
       .then((response) => {
-        if (response?.sucess == true) {
+        if (response?.success == true) {
           toast.success(response?.message, { autoClose: 2000 });
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         } else {
           toast.error(response?.message, { autoClose: 2000 });
         }

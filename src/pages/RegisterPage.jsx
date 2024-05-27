@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +15,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [inputValues, setinputValues] = useState({});
 
   const handleChange = (e) => {
@@ -38,6 +39,9 @@ export default function RegisterPage() {
       console.log(response.data);
       toast.success(response?.data?.message, { autoClose: 2000 });
       setinputValues({});
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       toast.error(error.response?.data?.message, { autoClose: 2000 });
       setinputValues({});
