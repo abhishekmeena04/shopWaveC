@@ -68,7 +68,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm shadow-2xl">
         <form onSubmit={handleSubmit}>
           <CardHeader>
-            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardTitle className="text-2xl">LoginPage</CardTitle>
             <CardDescription>
               Enter your email below to login to your account.
             </CardDescription>
@@ -105,7 +105,7 @@ export default function LoginPage() {
           </CardFooter>
         </form>
         <div className="mb-4 text-center text-sm">
-          Already have an account?{" "}
+          Already have an account.?{" "}
           <Link to="/register" className="underline">
             Sign up
           </Link>

@@ -53,7 +53,7 @@ export default function RegisterPage() {
         <CardHeader>
           <CardTitle className="text-xl">Sign Up</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            Enter your information to create an account...
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -97,9 +97,6 @@ export default function RegisterPage() {
               <Button type="submit" className="w-full">
                 Create an account
               </Button>
-              {/* <Button variant="outline" className="w-full">
-            Sign up with GitHub
-          </Button> */}
             </div>
           </form>
           <div className="mt-4 text-center text-sm">
