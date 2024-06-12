@@ -104,6 +104,9 @@ export default function RegisterPage() {
             <Link to="/login" className="underline">
               Sign in
             </Link>
+            <Link to="/login" className="underline">
+              Sign in
+            </Link>
           </div>
         </CardContent>
       </Card>
