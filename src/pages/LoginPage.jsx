@@ -68,7 +68,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm shadow-2xl">
         <form onSubmit={handleSubmit}>
           <CardHeader>
-            <CardTitle className="text-2xl">LoginPage</CardTitle>
+            <CardTitle className="text-2xl">Login</CardTitle>
             <CardDescription>
               Enter your email below to login to your account.
             </CardDescription>
